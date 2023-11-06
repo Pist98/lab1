@@ -5,7 +5,7 @@ public class Saab95 extends Car {
     public boolean turboOn; //subclass adds one more field
 
     
-    public Saab95(){
+     public Saab95(){
         nrDoors = 2;
         color = Color.red;
         enginePower = 125;

@@ -1,39 +1,46 @@
 import java.awt.*;
 
-public class Car {
+public class Car implements Movable  {
 
     public int nrDoors; // Number of doors on the car
     public double enginePower; // Engine power of the car
     public double currentSpeed; // The current speed of the car
     public Color color; // Color of the car
     public String modelName; // The car model name
+    public int direction;
+    public double x;
+    public double y;
+    public double currentX;
+    public double currentY;
 
 
-    public int getNrDoors() {
+
+
+    private int getNrDoors() {
         return nrDoors;
     }
 
-    public double getEnginePower() {
+    private double getEnginePower() {
         return enginePower;
     }
 
-    public double getCurrentSpeed() {
+    private double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    public Color getColor() {
+    private Color getColor() {
         return color;
     }
 
-    public void setColor(Color clr) {
+    private void setColor(Color clr) {
         color = clr;
     }
 
-    public double speed() {     // ?
+    private double speed() {     // ?
         return currentSpeed;
     }
 
-    public void startEngine() {
+    private void startEngine() {
         currentSpeed = 0.1;
     }
 
@@ -65,4 +72,24 @@ public class Car {
         decrementSpeed(amount);
     }
 
+
+
+    public void move() {
+        double radians = Math.toRadians(direction);
+
+        currentX = currentSpeed * Math.cos(radians);
+        currentY = currentSpeed * Math.sin(radians);
+
+        x = x + currentX;
+        y = y + currentY;
+    }
+
+
+    public void turnLeft() {}
+
+
+    public void turnRight() {}
+
 }
+
+

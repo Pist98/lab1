@@ -90,8 +90,8 @@ public class Car implements Movable  {
 
 
     public void move() {
-        x = x + currentSpeed * Math.cos(direction);  //grader, nytt värde på x och y
-        y = y + currentSpeed * Math.sin(direction);
+        x = x + currentSpeed * Math.sin(direction);  //grader, nytt värde på x och y
+        y = y + currentSpeed * Math.cos(direction);  //ändrat sin och cos, så bilen tittar åt positivt y
     }
 
 

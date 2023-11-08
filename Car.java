@@ -7,9 +7,9 @@ public class Car implements Movable  {
     public double currentSpeed; // The current speed of the car
     public Color color; // Color of the car
     public String modelName; // The car model name
-    public int direction;
-    public double x;
-    public double y;
+    public double direction;
+    public double x = 0;
+    public double y = 0;
     public double currentX;
     public double currentY;
 
@@ -75,20 +75,27 @@ public class Car implements Movable  {
 
 
     public void move() {
-        double radians = Math.toRadians(direction);
 
-        currentX = currentSpeed * Math.cos(radians);
-        currentY = currentSpeed * Math.sin(radians);
+        currentX = currentSpeed * Math.cos(direction);  //grader
+        currentY = currentSpeed * Math.sin(direction);
 
         x = x + currentX;
         y = y + currentY;
     }
 
 
-    public void turnLeft() {}
+    public void turnLeft() {
+        direction = (direction - 90) % 360;  //bound 360
+        if (direction < 0) {
+            direction += 360;
+        }
+    }
+
+        public void turnRight () {
+            direction = (direction + 90) % 360;
+        }
 
 
-    public void turnRight() {}
 
 }
 

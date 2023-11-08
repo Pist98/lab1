@@ -16,15 +16,15 @@ public class Car implements Movable  {
 
 
 
-    private int getNrDoors() {
+    public int getNrDoors() {
         return nrDoors;
     }
 
-    private double getEnginePower() {
+    public double getEnginePower() {
         return enginePower;
     }
 
-    private double getCurrentSpeed() {
+    public double getCurrentSpeed() {
         return currentSpeed;
     }
 
@@ -62,8 +62,7 @@ public class Car implements Movable  {
     }
 
 
-    // TODO fix this method according to lab pm
-    public void gas(double amount) {
+    public void gas(double amount, int i) {
         if (amount>= 0 && amount <= 1)
         {
             incrementSpeed(amount);
@@ -77,7 +76,6 @@ public class Car implements Movable  {
 
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount) {
         if (amount>= 0 && amount <= 1) {
             decrementSpeed(amount);
@@ -92,24 +90,20 @@ public class Car implements Movable  {
 
 
     public void move() {
-
-        currentX = currentSpeed * Math.cos(direction);  //grader
-        currentY = currentSpeed * Math.sin(direction);
-
-        x = x + currentX;
-        y = y + currentY;
+        x = x + currentSpeed * Math.cos(direction);  //grader, nytt värde på x och y
+        y = y + currentSpeed * Math.sin(direction);
     }
 
 
     public void turnLeft() {
-        direction = (direction - 90) % 360;  //bound 360
+        direction = (direction - 90);  //bound 360
         if (direction < 0) {
             direction += 360;
         }
     }
 
         public void turnRight () {
-            direction = (direction + 90) % 360;
+            direction = (direction + 90);
         }
 
 

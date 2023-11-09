@@ -1,6 +1,6 @@
 import org.junit.Test;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 public class testning {
 
@@ -57,7 +57,7 @@ public class testning {
         double x1= move_method.x; //another value
         double y1= move_method.y; //another value
 
-        assertTrue((x0 == x1) && (y1 > y0)); //bilen tittar upp mot positivt x i startläge
+        assertTrue((x0 == x1) && (y1 > y0)); //bilen tittar upp mot positivt y i startläge
 
     }
 
@@ -77,25 +77,30 @@ public class testning {
         right.turnRight();
         right.turnRight();
         double d1 = right.direction;
-        assertTrue(d0 > d1);
+        assertTrue(d0 < d1);
     }
 
-    /*
+
+
     @Test
-    public void road_trip_saab95() {
-        Saab95 trip= new Saab95();
-        trip.startEngine();//speed 0.1 always
+    public void road_trip_saab95_original_solution() {
+        Saab95 trip = new Saab95();
         double x0 = trip.x;
-        double y0= trip.y;
-        double d0= trip.direction;
+        double y0 = trip.y;
+        double d0 = trip.direction;
+        trip.startEngine();//speed 0.1 always
         trip.move();
         trip.turnRight();
-        trip.turnRight();
+        trip.move();
         trip.turnRight();
         trip.move();
+        trip.turnRight();
+        trip.move();
+        trip.turnRight();
         double x1 = trip.x;
         double y1 = trip.y;
         double d1 = trip.direction;
+
         System.out.println(x0);
         System.out.println(x1);
         System.out.println(y0);
@@ -103,18 +108,43 @@ public class testning {
         System.out.println(d0);
         System.out.println(d1);
 
-
-        trip.turnRight();
-        trip.move();
-        trip.turnRight();
-        trip.move();
+        assertTrue((x0 == x1) && (y0 == y1) && (d0 == d1));
+    }
 
 
 
-       assertTrue((x0==x1) && (y0 == y1) && (d0==d1));
+    @Test
+    public void road_trip_saab95_alternative_solution() {
+        Saab95 trip= new Saab95();
+        trip.startEngine();//speed 0.1 always
+
+        double x0 = trip.x;
+        double y0= trip.y;
+        double d0= trip.direction;
+
+        double x1 = trip.x;
+        double y1 = trip.y;
+        double d1 = trip.direction;
+
+        for (int i = 0; i <4 ; i++) {
+
+            trip.move();
+
+            x1 = trip.x;
+            y1 = trip.y;
+
+            trip.turnRight();
+
+            d1 = trip.direction;
+            System.out.println(x1 +" "+  y1 +" "+d1);
+        }
+        assertTrue((x0==x1) && (y0 == y1) && (d0==d1));
 
 
-     */
+    }
+
+
+
 
     }
 
@@ -125,4 +155,3 @@ public class testning {
 
 
 
-}

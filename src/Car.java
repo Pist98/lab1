@@ -1,25 +1,21 @@
 import java.awt.*;
 
-public class Car implements Movable  {
+abstract class Car implements Movable  {
 
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
-    public double direction;
-    public double x = 0;
-    public double y = 0;
-    public double currentX; //ta bort?
-    public double currentY; // ta bort?
-
-
+    protected int nrDoors; // Number of doors on the car
+    protected double enginePower; // Engine power of the car
+    protected double currentSpeed; // The current speed of the car
+    protected Color color; // Color of the car
+    protected String modelName; // The car model name
+    protected int direction=90;
+    protected double x = 0;
+    protected double y = 0;
 
     public int getNrDoors() {
         return nrDoors;
     }
 
-    public double getEnginePower() {
+    protected double getEnginePower() {
         return enginePower;
     }
 
@@ -43,7 +39,7 @@ public class Car implements Movable  {
         currentSpeed = 0.1;
     }
 
-    public void stopEngine() {
+    protected void stopEngine() {
         currentSpeed = 0;
     }
 
@@ -52,7 +48,7 @@ public class Car implements Movable  {
         return enginePower * 0.01;      //Override in subclasses
     }
 
-    public void incrementSpeed(double amount) {
+    private void incrementSpeed(double amount) {
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);  //SAAB has not math.min  wrong?
     }
 
@@ -75,7 +71,7 @@ public class Car implements Movable  {
 
     }
 
-    public void brake(double amount) {
+    protected void brake(double amount) {
         if (amount>= 0 && amount <= 1) {
             decrementSpeed(amount);
 
@@ -87,8 +83,9 @@ public class Car implements Movable  {
 
     }
 
-
     public void move() {
+
+        /*
         switch (direction) {
             case 0:
                 y = y + getCurrentSpeed();
@@ -104,9 +101,10 @@ public class Car implements Movable  {
                 break;
         }
     }
+ */
 
-       // x = x + currentSpeed * (direction);  //grader, nytt värde på x och y, Math.sin
-      //  y = y + currentSpeed * (direction);  //ändrat sin och cos, så bilen tittar åt positivt y, Math.cos
+    x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));  //grader, nytt värde på x och y, Math.sin
+    y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));  //ändrat sin och cos, så bilen tittar åt positivt y, Math.cos
 
 
     public void turnLeft() {

@@ -5,14 +5,14 @@ import static org.junit.Assert.*;
 public class testning {
 
     @Test
-    public void nr_doors_saab() {
+    public void nr_doors_saab95() {
         Saab95 s_doors = new Saab95();
        int doors = s_doors.getNrDoors();
        assertTrue(doors == 2);
     }
 
     @Test
-    public void enginePower_test_volvo () {
+    public void enginePower_test_volvo240 () {
         Volvo240 engine = new Volvo240();
         double x = engine.getEnginePower();
         assertTrue(x == 100);
@@ -61,6 +61,7 @@ public class testning {
 
     }
 
+    /*
     @Test
     public void turn_left_method_saab95() {
         Saab95 left = new Saab95();
@@ -68,35 +69,50 @@ public class testning {
         left.turnLeft();
         left.turnLeft();
         double d1 = left.direction;
-        assertTrue(d1 > d0);
+        assertTrue(d1 > d0);                    //modulo, aldrig negativa värden!
     }
+    */
+
     @Test
-    public void right() {
+    public void turn_left_method_saab95() {
+        Saab95 left = new Saab95();
+        double d0= left.direction;
+        left.turnLeft();
+        left.turnLeft();
+        left.turnLeft();
+        left.turnLeft();
+        double d1 = left.direction;
+        assertTrue(d1 == d0);
+    }
+
+
+    @Test
+    public void turn_right_method_saab95() {
         Saab95 right = new Saab95();
         double d0= right.direction;
         right.turnRight();
         right.turnRight();
+        right.turnRight();
+        right.turnRight();
         double d1 = right.direction;
-        assertTrue(d0 < d1);
+        assertTrue(d0 == d1);
     }
 
-
-
     @Test
-    public void road_trip_saab95_original_solution() {
+    public void road_trip_left_saab95() {
         Saab95 trip = new Saab95();
         double x0 = trip.x;
         double y0 = trip.y;
         double d0 = trip.direction;
         trip.startEngine();//speed 0.1 always
         trip.move();
-        trip.turnRight();
+        trip.turnLeft();
         trip.move();
-        trip.turnRight();
+        trip.turnLeft();
         trip.move();
-        trip.turnRight();
+        trip.turnLeft();
         trip.move();
-        trip.turnRight();
+        trip.turnLeft();
         double x1 = trip.x;
         double y1 = trip.y;
         double d1 = trip.direction;
@@ -110,7 +126,6 @@ public class testning {
 
         assertTrue((x0 == x1) && (y0 == y1) && (d0 == d1));
     }
-
 
 
     @Test

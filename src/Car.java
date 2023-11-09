@@ -10,9 +10,8 @@ public class Car implements Movable  {
     public double direction;
     public double x = 0;
     public double y = 0;
-    public double currentX;
-    public double currentY;
-
+    public double currentX; //ta bort?
+    public double currentY; // ta bort?
 
 
 

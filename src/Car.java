@@ -11,7 +11,7 @@ abstract class Car implements Movable  {
     protected double x = 0;
     protected double y = 0;
 
-    public int getNrDoors() {
+    protected int getNrDoors() {
         return nrDoors;
     }
 
@@ -19,15 +19,15 @@ abstract class Car implements Movable  {
         return enginePower;
     }
 
-    public double getCurrentSpeed() {
+    protected double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    private Color getColor() {
+    protected Color getColor() {
         return color;
     }
 
-    private void setColor(Color clr) {
+    protected void setColor(Color clr) {
         color = clr;
     }
 
@@ -35,7 +35,7 @@ abstract class Car implements Movable  {
         return currentSpeed;
     }
 
-    private void startEngine() {
+    protected void startEngine() {
         currentSpeed = 0.1;
     }
 
@@ -43,21 +43,19 @@ abstract class Car implements Movable  {
         currentSpeed = 0;
     }
 
-
-    public double speedFactor() {
+    protected double speedFactor() {
         return enginePower * 0.01;      //Override in subclasses
     }
 
     private void incrementSpeed(double amount) {
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);  //SAAB has not math.min  wrong?
     }
-
-    public void decrementSpeed(double amount) {
+    private void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0); //mat.max, not 0 Saab?
     }
 
 
-    public void gas(double amount, int i) {
+    protected void gas(double amount) {
         if (amount>= 0 && amount <= 1)
         {
             incrementSpeed(amount);
@@ -65,10 +63,7 @@ abstract class Car implements Movable  {
             if (currentSpeed > enginePower){
                 currentSpeed = enginePower;
             }
-
         }
-
-
     }
 
     protected void brake(double amount) {
@@ -80,10 +75,13 @@ abstract class Car implements Movable  {
             }
         }
 
-
     }
 
     public void move() {
+
+
+    x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));  //grader, nytt värde på x och y, Math.sin
+    y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));  //ändrat sin och cos, så bilen tittar åt positivt y, Math.cos
 
         /*
         switch (direction) {
@@ -102,24 +100,17 @@ abstract class Car implements Movable  {
         }
     }
  */
-
-    x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));  //grader, nytt värde på x och y, Math.sin
-    y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));  //ändrat sin och cos, så bilen tittar åt positivt y, Math.cos
-
-
+    }
     public void turnLeft() {
-        direction = (direction - 90);  //bound 360
+        direction = ((direction - 90)%360);    //+360)%360; Går ett helt varv igen och tar modulo på det
         if (direction < 0) {
             direction += 360;
         }
     }
 
-        public void turnRight () {
-            direction = (direction + 90);
-        }
-
-
-
+    public void turnRight () {
+        direction = (direction + 90)%360;
+    }
 }
 
 

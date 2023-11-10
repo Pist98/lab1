@@ -44,17 +44,16 @@ public class test_volvo {
         left.turnLeft();
         left.turnLeft();
         double d1 = left.direction;
-        assertTrue(d1 > d0);                    //modulo, aldrig negativa värden!
+        assertTrue(d1 > d0);
     }
 
     @Test
     public void turn_right_method_volvo240() {
         Volvo240 right = new Volvo240();
         double d0 = right.direction;
-        right.turnRight();
-        right.turnRight();
-        right.turnRight();
-        right.turnRight();
+        for (int i = 0; i < 4; i++) {
+            right.turnRight();
+        }
         double d1 = right.direction;
         assertTrue(d0 == d1);
     }

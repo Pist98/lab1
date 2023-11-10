@@ -2,32 +2,32 @@ import java.awt.*;
 
 abstract class Car implements Movable  {
 
-    protected int nrDoors; // Number of doors on the car
-    protected double enginePower; // Engine power of the car
-    protected double currentSpeed; // The current speed of the car
-    protected Color color; // Color of the car
-    protected String modelName; // The car model name
+    protected int nrDoors;
+    protected double enginePower;
+    protected double currentSpeed;
+    protected Color color;
+    protected String modelName;
     protected int direction=90;
     protected double x = 0;
     protected double y = 0;
 
-    protected int getNrDoors() {
+    public int getNrDoors() {
         return nrDoors;
     }
 
-    protected double getEnginePower() {
+    public double getEnginePower() {
         return enginePower;
     }
 
-    protected double getCurrentSpeed() {
+    public double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    protected Color getColor() {
+    public Color getColor() {
         return color;
     }
 
-    protected void setColor(Color clr) {
+    public void setColor(Color clr) {
         color = clr;
     }
 
@@ -48,10 +48,10 @@ abstract class Car implements Movable  {
     }
 
     private void incrementSpeed(double amount) {
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);  //SAAB has not math.min  wrong?
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
     }
     private void decrementSpeed(double amount) {
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0); //mat.max, not 0 Saab?
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 
 
@@ -66,7 +66,7 @@ abstract class Car implements Movable  {
         }
     }
 
-    protected void brake(double amount) {
+    public void brake(double amount) {
         if (amount>= 0 && amount <= 1) {
             decrementSpeed(amount);
 
@@ -102,7 +102,7 @@ abstract class Car implements Movable  {
  */
     }
     public void turnLeft() {
-        direction = ((direction - 90)%360);    //+360)%360; Går ett helt varv igen och tar modulo på det
+        direction = ((direction - 90)%360);
         if (direction < 0) {
             direction += 360;
         }
@@ -112,5 +112,3 @@ abstract class Car implements Movable  {
         direction = (direction + 90)%360;
     }
 }
-
-

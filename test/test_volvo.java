@@ -32,9 +32,7 @@ public class test_volvo {
         double current_speed_1 = Volvo240_speed.getCurrentSpeed();
         Volvo240_speed.brake(0.7);
         double current_speed_2 = Volvo240_speed.getCurrentSpeed();
-
         assertTrue(current_speed_2 < current_speed_1);
-
     }
 
     @Test
@@ -68,28 +66,14 @@ public class test_volvo {
             double y0 = trip.y;
             double d0 = trip.direction;
 
-            double x1 = trip.x;
-            double y1 = trip.y;
-            double d1 = trip.direction;
-
             for (int i = 0; i < 4; i++) {
                 trip.move();
                 trip.turnRight();
-                x1 = trip.x;
-                y1 = trip.y;
-                d1 = trip.direction;
             }
+
+            double x1 = trip.x;
+            double y1 = trip.y;
+            double d1 = trip.direction;
             assertTrue((x0 == x1) && (y0 == y1) && (d0 == d1));
         }
     }
-
-
-
-
-
-
-
-
-
-
-

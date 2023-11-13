@@ -36,7 +36,7 @@ abstract class Car implements Movable  {
         color = clr;
     }
 
-    private double speed() {     // ?
+    protected double speed() {     // ?
         return currentSpeed;
     }
 
@@ -59,12 +59,10 @@ abstract class Car implements Movable  {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 
-
-    protected void gas(double amount) {
+    public void gas(double amount) {
         if (amount>= 0 && amount <= 1)
         {
             incrementSpeed(amount);
-
             if (currentSpeed > enginePower){
                 currentSpeed = enginePower;
             }
@@ -74,38 +72,16 @@ abstract class Car implements Movable  {
     public void brake(double amount) {
         if (amount>= 0 && amount <= 1) {
             decrementSpeed(amount);
-
             if (currentSpeed < 0) {
                 currentSpeed = 0;
             }
         }
-
     }
-
     public void move() {
-
-
-    x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));  //grader, nytt värde på x och y, Math.sin
-    y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));  //ändrat sin och cos, så bilen tittar åt positivt y, Math.cos
-
-        /*
-        switch (direction) {
-            case 0:
-                y = y + getCurrentSpeed();
-                break;
-            case 90:
-                x += getCurrentSpeed();
-                break;
-            case 180:
-                y -= getCurrentSpeed();
-                break;
-            case 270:
-                x -= getCurrentSpeed();
-                break;
-        }
+    x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));
+    y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));
     }
- */
-    }
+
     public void turnLeft() {
         direction = ((direction - 90)%360);
         if (direction < 0) {

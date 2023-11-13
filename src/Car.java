@@ -3,6 +3,7 @@ import java.awt.*;
 abstract class Car implements Movable  {
 
     protected int nrDoors;
+    protected double vinkel;
     protected double enginePower;
     protected double currentSpeed;
     protected Color color;
@@ -21,6 +22,10 @@ abstract class Car implements Movable  {
 
     public double getCurrentSpeed() {
         return currentSpeed;
+    }
+
+    public double get_vinkel() {
+        return vinkel;
     }
 
     public Color getColor() {

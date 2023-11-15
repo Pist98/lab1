@@ -50,6 +50,8 @@ abstract class Car implements Movable  {
         currentSpeed = 0;
     }
 
+    public String[] get_lastad(){return lastad;}
+
     protected double speedFactor() {
         return enginePower * 0.01;      //Override in subclasses
     }

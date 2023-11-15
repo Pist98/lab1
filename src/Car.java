@@ -101,4 +101,12 @@ abstract class Car implements Movable  {
             flak = false;
         }
     }
+
+
+
+
+
+
+
+
 }

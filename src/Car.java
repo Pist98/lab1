@@ -93,4 +93,10 @@ abstract class Car implements Movable  {
     public void turnRight () {
         direction = (direction + 90)%360;
     }
+
+    protected void check_flak() {
+        if (getCurrentSpeed() > 0) {
+            flak = false;
+        }
+    }
 }

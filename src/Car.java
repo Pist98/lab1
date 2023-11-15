@@ -11,6 +11,8 @@ abstract class Car implements Movable  {
     protected int direction=90;
     protected double x = 0;
     protected double y = 0;
+    boolean flak= true;
+    protected int last;
 
     public int getNrDoors() {
         return nrDoors;
@@ -52,7 +54,7 @@ abstract class Car implements Movable  {
         return enginePower * 0.01;      //Override in subclasses
     }
 
-    private void incrementSpeed(double amount) {
+    protected void incrementSpeed(double amount) {
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
     }
     private void decrementSpeed(double amount) {
@@ -60,8 +62,7 @@ abstract class Car implements Movable  {
     }
 
     public void gas(double amount) {
-        if (amount>= 0 && amount <= 1)
-        {
+        if (getCurrentSpeed() > 0 && amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
             if (currentSpeed > enginePower){
                 currentSpeed = enginePower;

@@ -30,21 +30,6 @@ Lägg allt i Scania.java. Gör minst ett JUnit-test i er testklass. */
     }
 
 
-protected void vinkel() {
-        if (getCurrentSpeed() > 0 ){ vinkel = 0; flak=false; }
-    }
-
-protected void start_scania() {
-        if (vinkel>0) {stopEngine();}
-        else {currentSpeed = 0.1;}
-    }
-
-    @Override
-    protected void startEngine() {
-        if (vinkel>0) {stopEngine();}
-        else {currentSpeed = 0.1;}
-    }
-    //Här ska vi overrida gas-metoden från car och lägga till en if-sats, om vinklen >0 currentspeed= samma(gasa ej) 
 
 public void höj_flak() {
         if (flak){ vinkel+=5;
@@ -57,10 +42,11 @@ public void höj_flak() {
       if (vinkel<0) {vinkel=0;}}
     }
 
-
-
-
-
+    @Override // Den gör ingenting egentligen ty bilen är ej beroande av engine/motorn
+    protected void startEngine() {
+        if (vinkel>0) {stopEngine();}
+        else {currentSpeed = 0.1;}
+    }
 
 
 }

@@ -83,23 +83,7 @@ abstract class Car implements Movable  {
     x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));  //grader, nytt värde på x och y, Math.sin
     y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));  //ändrat sin och cos, så bilen tittar åt positivt y, Math.cos
 
-        /*
-        switch (direction) {
-            case 0:
-                y = y + getCurrentSpeed();
-                break;
-            case 90:
-                x += getCurrentSpeed();
-                break;
-            case 180:
-                y -= getCurrentSpeed();
-                break;
-            case 270:
-                x -= getCurrentSpeed();
-                break;
-        }
-    }
- */
+
     }
     public void turnLeft() {
         direction = ((direction - 90)%360);

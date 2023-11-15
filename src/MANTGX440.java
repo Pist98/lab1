@@ -4,12 +4,15 @@ import java.awt.*;
 
 public class MANTGX440 extends Car {
 
+    int count = 0;
+    int null_count=0;
+
+
         public MANTGX440() {
             nrDoors = 2;
             color = Color.black;
             enginePower = 530;
             modelName = "MANTGX440";
-            last = 8;
             stopEngine();
         }
 
@@ -17,7 +20,8 @@ public class MANTGX440 extends Car {
     protected void ramp_ner(){
             check_flak();}
 
-    protected void ramp_upp(){
+
+    protected void ramp_up(){
             check_flak();}
 
 

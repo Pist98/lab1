@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 public class test_MANTGX440 {
 
-
+//car still = true, car speed = false
 
     @Test
     public void lower_ramp_MANTGX440() {

@@ -12,7 +12,8 @@ abstract class Car implements Movable  {
     protected double x = 0;
     protected double y = 0;
     boolean flak= true;
-    protected int last;
+    protected String[] lastad = new String[8];
+    protected String[] removed = new String[8];
 
     public int getNrDoors() {
         return nrDoors;

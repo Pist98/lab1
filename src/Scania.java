@@ -17,8 +17,6 @@ lastbilen är i rörelse; och lastbilen ska inte kunna köra om flaket är uppf�
 Lägg allt i Scania.java. Gör minst ett JUnit-test i er testklass. */
 
 
-    double vinkel;
-    boolean flak= true;
 
     public Scania(){
         nrDoors = 2;
@@ -32,11 +30,13 @@ Lägg allt i Scania.java. Gör minst ett JUnit-test i er testklass. */
 
 
 public void höj_flak() {
+    check_flak();// kollar hastigheten och om flaket får höjas
         if (flak){ vinkel+=5;
             if (vinkel>70) {vinkel=70;}}
     }
 
   public void sänk_flak() {
+      check_flak();
         if (flak) {
       vinkel-=5;
       if (vinkel<0) {vinkel=0;}}

@@ -3,6 +3,7 @@ import java.awt.*;
 abstract class Car implements Movable  {
 
     protected int nrDoors;
+    protected double vinkel;
     protected double enginePower;
     protected double currentSpeed;
     protected Color color;
@@ -10,6 +11,8 @@ abstract class Car implements Movable  {
     protected int direction=90;
     protected double x = 0;
     protected double y = 0;
+    boolean flak= true;
+    protected int last;
 
     public int getNrDoors() {
         return nrDoors;
@@ -23,6 +26,10 @@ abstract class Car implements Movable  {
         return currentSpeed;
     }
 
+    public double get_vinkel() {
+        return vinkel;
+    }
+
     public Color getColor() {
         return color;
     }
@@ -31,7 +38,7 @@ abstract class Car implements Movable  {
         color = clr;
     }
 
-    private double speed() {     // ?
+    protected double speed() {     // ?
         return currentSpeed;
     }
 
@@ -47,19 +54,16 @@ abstract class Car implements Movable  {
         return enginePower * 0.01;      //Override in subclasses
     }
 
-    private void incrementSpeed(double amount) {
+    protected void incrementSpeed(double amount) {
         currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
     }
     private void decrementSpeed(double amount) {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 
-
-    protected void gas(double amount) {
-        if (amount>= 0 && amount <= 1)
-        {
+    public void gas(double amount) {
+        if (getCurrentSpeed() > 0 && amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
-
             if (currentSpeed > enginePower){
                 currentSpeed = enginePower;
             }
@@ -69,38 +73,16 @@ abstract class Car implements Movable  {
     public void brake(double amount) {
         if (amount>= 0 && amount <= 1) {
             decrementSpeed(amount);
-
             if (currentSpeed < 0) {
                 currentSpeed = 0;
             }
         }
-
     }
-
     public void move() {
-
-
-    x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));  //grader, nytt värde på x och y, Math.sin
-    y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));  //ändrat sin och cos, så bilen tittar åt positivt y, Math.cos
-
-        /*
-        switch (direction) {
-            case 0:
-                y = y + getCurrentSpeed();
-                break;
-            case 90:
-                x += getCurrentSpeed();
-                break;
-            case 180:
-                y -= getCurrentSpeed();
-                break;
-            case 270:
-                x -= getCurrentSpeed();
-                break;
-        }
+    x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));
+    y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));
     }
- */
-    }
+
     public void turnLeft() {
         direction = ((direction - 90)%360);
         if (direction < 0) {

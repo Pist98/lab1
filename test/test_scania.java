@@ -26,20 +26,23 @@ public class test_scania {
     @Test
     public void höj_flak_scania_stilla (){
         Scania höja= new Scania();
-        double vinkel=höja.get_vinkel();
+        höja.check_speed_for_flak();
+        double upp_vinkel= höja.vinkel;
 
-        höja.höj_flak();
-        double upp_vinkel= höja.get_vinkel();
+        System.out.println(upp_vinkel);
+        //System.out.println(vinkel1);
         assertTrue(upp_vinkel == 5);
     }
 
     @Test
     public void sänk_flak_scania_stilla (){
         Scania sänk= new Scania();
-        double vinkel=sänk.get_vinkel();
-        sänk.sänk_flak();
-        double ny_vinkel= sänk.get_vinkel();
-        assertTrue(ny_vinkel == 0);
+        double vinkel = sänk.vinkel;
+        System.out.println(vinkel);
+        sänk.check_speed_for_flak();
+        double ny_vinkel= sänk.vinkel;
+        System.out.println(ny_vinkel);
+        assertTrue(ny_vinkel == vinkel);
 
     }
 
@@ -47,20 +50,19 @@ public class test_scania {
     public void höj_flak_scania_över_70 (){
         Scania höj= new Scania();
         for (int i = 0; i < 20; i++){
-        höj.höj_flak();}
-        double ny_vinkel= höj.get_vinkel();
+        höj.raise();}
+        double ny_vinkel= höj.vinkel;
         assertTrue(ny_vinkel == 70);
     }
 
 
     @Test
     public void start_engine_scania_flak_vinkel_större_noll (){
-        Scania start_vinkel= new Scania();
-        start_vinkel.höj_flak();
-        start_vinkel.startEngine();
-        start_vinkel.gas(0.7);
-        double speed = start_vinkel.getCurrentSpeed();
-        double v = start_vinkel.get_vinkel();
+        Scania scania_flak= new Scania();
+        scania_flak.raise();
+        scania_flak.startEngine();
+        scania_flak.gas(0.7);
+        double speed = scania_flak.getCurrentSpeed();
         assertTrue(speed==0);}
 
 
@@ -70,16 +72,11 @@ public class test_scania {
         Scania höj_om_speed = new Scania();
         höj_om_speed.startEngine();
         höj_om_speed.gas(0.7);
-        höj_om_speed.höj_flak();
-        boolean Flak= höj_om_speed.flak;;
-        assertTrue(Flak==false);
+        höj_om_speed.raise();
+        double vinkel_flak = höj_om_speed.vinkel;
+        assertTrue(vinkel_flak==0);
 
      }
-
-
-
-
-
 
 
 }

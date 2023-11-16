@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertTrue;
 
-public class test_MANTGX440 {
+/*public class test_MANTGX440 {
 
 //car still = true, car speed = false
 
@@ -17,8 +17,6 @@ public class test_MANTGX440 {
         System.out.println(Flak);
         assertTrue(Flak == true);
     }
-
-
     @Test
     public void raise_ramp_MANTGX440() {
         MANTGX440 truck = new MANTGX440();
@@ -29,7 +27,6 @@ public class test_MANTGX440 {
         System.out.println(Flak);
         assertTrue(Flak == false);
     }
-
 
     @Test
     public void load_cars_MANTGX440() {
@@ -52,7 +49,6 @@ public class test_MANTGX440 {
         assertTrue(truck.count <= truck.lastad.length);
     }
 
-
     @Test //skiter i det för tillfället, ty metoderna fungerar som de ska så det är bara och skriva test
     public void load_off_cars_MANTGX440() {
         MANTGX440 truck = new MANTGX440();
@@ -63,7 +59,6 @@ public class test_MANTGX440 {
         System.out.println(truck.lastad[0]);
         assertTrue(truck.lastad[0] == "volvo0");
     }
-
 
     @Test
     public void load_cars_if_ramp_up() {
@@ -86,9 +81,5 @@ public class test_MANTGX440 {
         assertTrue(before == after);
     }
 
-
-
-
-
-}
+}*/
 

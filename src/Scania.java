@@ -47,6 +47,4 @@ public void höj_flak() {
         if (vinkel>0) {stopEngine();}
         else {currentSpeed = 0.1;}
     }
-
-
 }

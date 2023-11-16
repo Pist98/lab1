@@ -3,7 +3,6 @@ import java.awt.*;
 abstract class Car implements Movable  {
 
     protected int nrDoors;
-    protected double vinkel;
     protected double enginePower;
     protected double currentSpeed;
     protected Color color;

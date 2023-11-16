@@ -1,6 +1,6 @@
 import java.awt.*;
 
-abstract class Car implements Movable  {
+public class Car implements Movable  {
 
     protected int nrDoors;
     protected double enginePower;
@@ -10,9 +10,8 @@ abstract class Car implements Movable  {
     protected int direction=90;
     protected double x = 0;
     protected double y = 0;
-    boolean flak= true;
-    protected String[] lastad = new String[8];
-    protected String[] removed = new String[8];
+
+
 
     public int getNrDoors() {
         return nrDoors;
@@ -24,10 +23,6 @@ abstract class Car implements Movable  {
 
     public double getCurrentSpeed() {
         return currentSpeed;
-    }
-
-    public double get_vinkel() {
-        return vinkel;
     }
 
     public Color getColor() {
@@ -49,8 +44,6 @@ abstract class Car implements Movable  {
     protected void stopEngine() {
         currentSpeed = 0;
     }
-
-    public String[] get_lastad(){return lastad;}
 
     protected double speedFactor() {
         return enginePower * 0.01;      //Override in subclasses
@@ -96,11 +89,6 @@ abstract class Car implements Movable  {
         direction = (direction + 90)%360;
     }
 
-    protected void check_flak() {
-        if (getCurrentSpeed() > 0) {
-            flak = false;
-        }
-    }
 
 
 

@@ -34,4 +34,19 @@ public class Scania extends Car{
             if (vinkel < 0) {vinkel = 0;}
             }
         }
+
+
+    @Override
+    public void gas(double amount) {
+        if (flak){
+            currentSpeed=0;
+        }
+        else {
+        if (getCurrentSpeed() > 0 && amount >= 0 && amount <= 1) {
+            incrementSpeed(amount);
+            if (currentSpeed > enginePower) {
+                currentSpeed = enginePower;}
+        }
+        }
+    }
 }

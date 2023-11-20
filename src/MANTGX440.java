@@ -50,7 +50,6 @@ public class MANTGX440 extends Car {
         }
     }
 
-
 }
 
 

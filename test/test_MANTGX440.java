@@ -4,10 +4,23 @@ import javax.swing.table.DefaultTableCellRenderer;
 import java.util.Arrays;
 
 import static org.junit.Assert.assertTrue;
-
+//Skriva ett test för att kolla falk
 public class test_MANTGX440 {
     Volvo240 volvo1 = new Volvo240();
     Volvo240 volvo2 = new Volvo240();
+
+
+
+    @Test
+    public void Move_when_flak_is_open(){
+        MANTGX440 truck = new MANTGX440();
+        truck.flak=true;
+        truck.gas(0.7);
+        assertTrue(truck.getCurrentSpeed()==0);
+    }
+
+
+
 
     @Test
     public void load_on_cars() {
@@ -39,6 +52,9 @@ public class test_MANTGX440 {
         truck.move();
         assertTrue(truck.getYPos()>y0);
     }
+
+
+
 
 }
 

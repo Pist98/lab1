@@ -3,14 +3,22 @@ import java.awt.*;
 public class Car implements Movable  {
 
     protected int nrDoors;
+    protected double vinkel;
     protected double enginePower;
     protected double currentSpeed;
     protected Color color;
     protected String modelName;
     protected int direction=90;
-    protected double x = 0;
-    protected double y = 0;
-
+    public double x = 0;
+    public double y = 0;
+    boolean flak= true;
+    protected int last;
+    public double getXPos() {
+        return x;
+    }
+    public double getYPos() {
+        return y;
+    }
 
 
     public int getNrDoors() {
@@ -23,6 +31,10 @@ public class Car implements Movable  {
 
     public double getCurrentSpeed() {
         return currentSpeed;
+    }
+
+    public double get_vinkel() {
+        return vinkel;
     }
 
     public Color getColor() {
@@ -74,8 +86,8 @@ public class Car implements Movable  {
         }
     }
     public void move() {
-    x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));
-    y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));
+        x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));
+        y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));
     }
 
     public void turnLeft() {
@@ -88,13 +100,5 @@ public class Car implements Movable  {
     public void turnRight () {
         direction = (direction + 90)%360;
     }
-
-
-
-
-
-
-
-
 
 }

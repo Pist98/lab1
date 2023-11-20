@@ -1,47 +1,37 @@
 import java.awt.*;
 
 public class Scania extends Car{
-    double svinkel=0;
+
     double vinkel;
-    HelperFlak s = new HelperFlak(70, 0, svinkel);
+    boolean flak; //upp=false, ner=true
 
     public Scania(){
         nrDoors = 2;
         color = Color.white;
         enginePower = 530;
         modelName = "Scania";
+        flak=true;
         stopEngine();
 
     }
 
-    protected void check_speed_for_flak() {
-        if (getCurrentSpeed() == 0) {
-            svinkel = svinkel + vinkel;}
-        }
-
-    protected void closed_flak() {
-        if (getCurrentSpeed() > 0) {
-            vinkel=0;
-        }
+    protected void check_flak() {
+        if (getCurrentSpeed() !=0) {flak=false;}
     }
 
-    public void raise(){
-    if (s.check_iftrue()){
-        s.höj_flak();
-    }
-    }
-
-    public void lower(){
-        if (s.check_iftrue()){
-            s.sänk_flak();
+    public void raise_flak(int x){
+        check_flak();
+    if (flak){
+         vinkel += x;
+         if (vinkel > 70) {vinkel = 70;}
         }
     }
 
-
-
-    @Override // Den gör ingenting egentligen ty bilen är ej beroande av engine/motorn
-    protected void startEngine() {
-        if (vinkel>0) {stopEngine();}
-        else {currentSpeed = 0.1;}
-    }
+    public void lower_flak(int x){
+        check_flak();
+        if (flak){
+            vinkel -= x;
+            if (vinkel < 0) {vinkel = 0;}
+            }
+        }
 }

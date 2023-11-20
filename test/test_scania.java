@@ -25,23 +25,18 @@ public class test_scania {
 
     @Test
     public void höj_flak_scania_stilla (){
-        Scania höja= new Scania();
-        höja.check_speed_for_flak();
-        double upp_vinkel= höja.vinkel;
-
-        System.out.println(upp_vinkel);
-        //System.out.println(vinkel1);
-        assertTrue(upp_vinkel == 5);
+        Scania car= new Scania();
+        car.raise_flak(10);
+        double upp_vinkel= car.vinkel;
+        assertTrue(upp_vinkel == 10);
     }
 
     @Test
     public void sänk_flak_scania_stilla (){
-        Scania sänk= new Scania();
-        double vinkel = sänk.vinkel;
-        System.out.println(vinkel);
-        sänk.check_speed_for_flak();
-        double ny_vinkel= sänk.vinkel;
-        System.out.println(ny_vinkel);
+        Scania car= new Scania();
+        double vinkel = car.vinkel;
+        car.lower_flak(100);
+        double ny_vinkel= car.vinkel;
         assertTrue(ny_vinkel == vinkel);
 
     }
@@ -50,7 +45,7 @@ public class test_scania {
     public void höj_flak_scania_över_70 (){
         Scania höj= new Scania();
         for (int i = 0; i < 20; i++){
-        höj.raise();}
+        höj.raise_flak(10);}
         double ny_vinkel= höj.vinkel;
         assertTrue(ny_vinkel == 70);
     }
@@ -59,7 +54,7 @@ public class test_scania {
     @Test
     public void start_engine_scania_flak_vinkel_större_noll (){
         Scania scania_flak= new Scania();
-        scania_flak.raise();
+        scania_flak.raise_flak(10);
         scania_flak.startEngine();
         scania_flak.gas(0.7);
         double speed = scania_flak.getCurrentSpeed();
@@ -69,14 +64,12 @@ public class test_scania {
 
     @Test
     public void höj_flak_scania_if_speed_greater_than_zero(){
-        Scania höj_om_speed = new Scania();
-        höj_om_speed.startEngine();
-        höj_om_speed.gas(0.7);
-        höj_om_speed.raise();
-        double vinkel_flak = höj_om_speed.vinkel;
+        Scania car = new Scania();
+        car.gas(0.7);
+        car.raise_flak(10);
+        double vinkel_flak = car.vinkel;
+        System.out.println(car.vinkel);
         assertTrue(vinkel_flak==0);
-
      }
-
 
 }

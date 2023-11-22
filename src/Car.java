@@ -1,3 +1,5 @@
+package lab1.src;
+
 import java.awt.*;
 
 public abstract class Car implements Movable{

@@ -7,7 +7,6 @@ public class VolvoWorkshop {
     ArrayList<Volvo240> unloaded_volvos = new ArrayList <>();
 
 
-
     public void load(Volvo240 car) {
         if (loaded_volvos.size() < max) {
             loaded_volvos.add(car);}
@@ -15,7 +14,7 @@ public class VolvoWorkshop {
 
     public void unload(){
         int last_car= loaded_volvos.size() -1;
-        unloaded_volvos.add(loaded_volvos.remove(last_car));
+        unloaded_volvos.add(loaded_volvos.get(last_car));
         loaded_volvos.remove(last_car);
     }
 }

@@ -16,7 +16,6 @@ public class test_scania {
     public void test_gas_scania() {
         Scania scania_speed = new Scania();
         scania_speed.startEngine();
-        scania_speed.flak=false;
         double current_speed_1 = scania_speed.getCurrentSpeed();
         scania_speed.gas(0.7);
         double current_speed_2 = scania_speed.getCurrentSpeed();
@@ -27,7 +26,7 @@ public class test_scania {
     @Test
     public void höj_flak_scania_stilla (){
         Scania car= new Scania();
-        car.raise_flak(45);
+        car.raise_flak();
         double upp_vinkel= car.vinkel;
         assertTrue(upp_vinkel == 45);
     }
@@ -36,7 +35,7 @@ public class test_scania {
     public void sänk_flak_scania_stilla (){
         Scania car= new Scania();
         double vinkel = car.vinkel;
-        car.lower_flak(100);
+        car.lower_flak();
         double ny_vinkel= car.vinkel;
         assertTrue(ny_vinkel == vinkel);
 
@@ -46,7 +45,7 @@ public class test_scania {
     public void höj_flak_scania_över_70 (){
         Scania höj= new Scania();
         for (int i = 0; i < 20; i++){
-        höj.raise_flak(10);}
+        höj.raise_flak();}
         double ny_vinkel= höj.vinkel;
         assertTrue(ny_vinkel == 70);
     }
@@ -55,7 +54,7 @@ public class test_scania {
     @Test
     public void start_engine_scania_flak_vinkel_större_noll (){
         Scania scania_flak= new Scania();
-        scania_flak.raise_flak(10);
+        scania_flak.raise_flak();
         scania_flak.startEngine();
         scania_flak.gas(0.7);
         double speed = scania_flak.getCurrentSpeed();
@@ -66,9 +65,8 @@ public class test_scania {
     @Test
     public void höj_flak_scania_if_speed_greater_than_zero(){
         Scania car = new Scania();
-        car.flak=false;
         car.gas(0.7);
-        car.raise_flak(10);
+        car.raise_flak();
         double vinkel_flak = car.vinkel;
         assertTrue(vinkel_flak==0);
      }

@@ -1,18 +1,16 @@
 import java.awt.*;
 
-public class Car implements Movable  {
-
+public abstract class Car implements Movable{
     protected int nrDoors;
     protected double vinkel;
     protected double enginePower;
     protected double currentSpeed;
     protected Color color;
+    protected boolean flak; //true= open, False=closed
     protected String modelName;
     protected int direction=90;
     public double x = 0;
     public double y = 0;
-    boolean flak= true;
-    protected int last;
     public double getXPos() {
         return x;
     }
@@ -68,11 +66,17 @@ public class Car implements Movable  {
         currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
     }
 
+
+
     public void gas(double amount) {
-        if (getCurrentSpeed() > 0 && amount >= 0 && amount <= 1) {
-            incrementSpeed(amount);
-            if (currentSpeed > enginePower){
-                currentSpeed = enginePower;
+        if (flak){
+            currentSpeed=0;
+        }
+        else {
+            if (amount >= 0 && amount <= 1) {
+                incrementSpeed(amount);
+                if (currentSpeed > enginePower) {
+                    currentSpeed = enginePower;}
             }
         }
     }
@@ -100,5 +104,21 @@ public class Car implements Movable  {
     public void turnRight () {
         direction = (direction + 90)%360;
     }
+
+    public void check_flak() {
+        if (getCurrentSpeed() !=0) {flak=false;}
+        else {flak=true;}
+
+    }
+    public void raise_flak(){//open flak
+        if (currentSpeed==0){
+            flak=true;
+        }
+    }
+
+    public void lower_flak(){//close flak
+        flak=false;
+    }
+
 
 }
